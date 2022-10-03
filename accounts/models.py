@@ -41,3 +41,9 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
+
+
+class PhoneOTP(models.Model):
+    phone = models.CharField(max_length=11, null=True)
+    otp = models.IntegerField(null=True)
+    date = models.DateTimeField(auto_now_add=True)

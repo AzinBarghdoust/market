@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Verify</title>
+        <link rel="stylesheet" href="" type="text/css">
+    </head>
+    <body>
+        <form action="{%  url 'verify' %}" method="post">
+            {% csrf_token %}
+            <input type="number" name="otp" id="">
+            <input type="submit" value="Verify">
+        </form>
+
+    </body>
+</html>
