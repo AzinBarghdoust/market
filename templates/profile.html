@@ -1,6 +1,6 @@
 {% extends '_base.html' %}
 
-{%  load crispy_forms_tags %}
+{% load crispy_forms_tags %}
 
 {% block page_title %}
     Profile
@@ -14,19 +14,28 @@
                     <div class="card" style="border-radius: 20px;">
                         <div class="card-body p-5">
                             <h3 class="text-uppercase text-center mt-6 ">پروفایل کاربری</h3>
+
                             <form action="{% url 'profile' %}" method="post">
                                 {% csrf_token %}
                                 <label>نام:
-                                        <input name="name">
+                                    <input name="name">
                                 </label>
+                                <br><br>
                                 <label>نام خانوادگی:
-                                        <input name="name">
+                                    <input name="name">
                                 </label>
-                                    <label>جنسیت:
-                                        <input name="password">
+                                <br><br>
+                                <label for="cars">جنسیت:</label>
+                                <select name="cars" id="cars">
+                                    <option value="Woman">زن</option>
+                                    <option value="Man">مرد</option>
+                                    </select>
+                                    <br><br>
+                                    <label>ایمیل:
+                                        <input name="email">
                                     </label>
-                                <button type="submit" class="btn btn-success">Sign Up</button>
-                                <button type="submit" class="btn btn-success mt-2">ذخیره</button>
+                                    <br>
+                                    <button type="submit" class="btn btn-success mt-2">ذخیره</button>
                             </form>
                         </div>
                     </div>
