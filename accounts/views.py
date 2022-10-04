@@ -1,12 +1,14 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
+from django.views import generic
 from kavenegar import KavenegarAPI, APIException, HTTPException
 
 from accounts.forms import UserAdminCreationForm
 from accounts.helper import send_otp
 from random import randint
-from accounts.models import PhoneOTP, CustomUser
+from accounts.models import PhoneOTP, CustomUser, Profile
 
 
 def signup(req):
@@ -96,3 +98,14 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+class Profile(LoginRequiredMixin, generic.CreateView):
+    model = Profile
+    fields = ['first_name', 'last_name', 'gender', 'email', ]
+    template_name = 'profile.html'
+
+    def form_valid(self, form):
+        question = form.save(commit=False)
+        question.user = self.request.user
+        return super().form_valid(form)

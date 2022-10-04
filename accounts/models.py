@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
+from django.urls import reverse
 
 
 class CustomUserManager(BaseUserManager):
@@ -47,3 +48,20 @@ class PhoneOTP(models.Model):
     phone = models.CharField(max_length=11, null=True)
     otp = models.IntegerField(null=True)
     date = models.DateTimeField(auto_now_add=True)
+
+
+class Profile(models.Model):
+    Man = 1
+    Woman = 2
+    STATUS_CHOICES = ((Man, 'مرد'), (Woman, "زن"))
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100, verbose_name='نام')
+    last_name = models.CharField(max_length=100, verbose_name='نام خانوادگی')
+    gender = models.IntegerField(choices=STATUS_CHOICES, verbose_name='جنسیت')
+    email = models.EmailField(max_length=200, blank=True, unique=True, default=None, verbose_name='ایمیل')
+
+    def __str__(self):
+        return self.first_name
+
+    def get_absolute_url(self):
+        return reverse('profile.html', args=[self.id])
