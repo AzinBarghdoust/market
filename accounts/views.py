@@ -15,7 +15,29 @@ def signup(req):
         form = UserAdminCreationForm(req.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+        phone = form.cleaned_data.get('phone')
+        password = form.cleaned_data.get('password')
+        user = CustomUser.objects.create(phone=phone, password=password)
+        otp = randint(10000, 99999)
+        try:
+            print(phone)
+            api = KavenegarAPI(
+                '6B452B6E5070585972704F6C696D5A7A72766C67524D79496E4F6B6A59756463566B57696D65666E4636633D')
+            params = {
+                'sender': '10008663',
+                'receptor': phone,
+                'message': f'your otp is {otp}'
+            }
+            response = api.sms_send(params)
+            print(response)
+            print(otp)
+        except APIException as e:
+            print(e)
+        except HTTPException as e:
+            print(e)
+        phone_otp = PhoneOTP.objects.create(phone=phone, otp=otp)
+        return redirect('verify')
+
     return render(req, 'registration/signup.html', {'form': form})
 
 
@@ -47,7 +69,7 @@ def login_view(request):
 
         if user is not None:
             login(request, user)
-            otp = randint(1000, 9999)
+            otp = randint(10000, 99999)
             # send_otp(phone, otp)
             try:
                 print(phone)
