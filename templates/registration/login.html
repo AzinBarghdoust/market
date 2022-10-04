@@ -1,56 +1,146 @@
-{% extends '_base.html' %}
+{#{% extends '_base.html' %}#}
 
 {% load static %}
-{% load crispy_forms_tags %}
-{% block page_title %}
-    Login
-{% endblock page_title %}
-
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-{% endblock %}
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'image/icons/favicon.ico' %}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'font/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'font/iconic/css/material-design-iconic-font.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'cs/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'cs/main.css' %}">
+    <!--===============================================================================================-->
+</head>
+{#{% load crispy_forms_tags %}#}
+{#{% block page_title %}#}
+{#    Login#}
+{#{% endblock page_title %}#}
+{##}
+{#{% block styles %}#}
+{#    <link rel="stylesheet" href="{% static 'css/login.css' %}">#}
+{#{% endblock %}#}
 
 {% block content %}
     <div class="limiter">
-        <div class="container-login100">
+        <div class="container-login100" style="background-image: url('/image/bg-01.jpg');">
             <div class="wrap-login100">
-                <div class="d-flex justify-content-center mt-5" dir="rtl">
-                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 col-xs-6 bg-white m-3 m-sm-5 border rounded px-4 pt-4 pb-3 shadow"
-                </div>
-{#                <div class="login100-form-title" style="background-image: url(icons/bg-01.jpg);">#}
-                </div>
-                <form  action="{%  url 'login' %}" method="post" >
+                <form action="{% url 'login' %}" method="post" class="login100-form validate-form">
                     {% csrf_token %}
-                    <label>phone
-                        <input name="phone">
-                    </label>
-                    <label>password
-                        <input name="password">
-                    </label>
-                     <button type="submit" class="btn btn-outline-success mt-3 w-100">ورود</button>
+                    <span class="login100-form-logo">
+						<i class="zmdi zmdi-landscape"></i>
+					</span>
+
+                    <span class="login100-form-title p-b-34 p-t-27">
+						ورود
+					</span>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter username">
+                        <input class="input100" type="text" name="phone" placeholder="موبایل">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+
+                        <input class="input100" type="password" name="password" placeholder="رمز عبور">
+
+                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button type='submit' class="login100-form-btn">
+                            ورود
+                        </button>
+                    </div>
+                    <br>
+                    <div class="container-login100-form-btn">
+                        <a href="{% url 'signup' %}" class="login100-form-btn">ثبت نام</a>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
-                {#        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 col-xs-6 bg-white m-3 m-sm-5 border rounded px-4 pt-4 pb-3 shadow">#}
-{#                <form method="post">#}
-                    {#                        <h1 class="text-center">ورود</h1>#}
-{#                    {% csrf_token %}#}
-{#                    {{ form|crispy }}#}
-{#                    <div class="d-flex justify-content-between align-items-center">#}
-{#                        <div class="mt-2">#}
-{#                            <a class="text-decoration-none" href="{% url 'password_reset' %}">فراموشی رمز عبور</a>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <button type="submit" class="btn btn-outline-success mt-3 w-100">ورود</button>#}
-{#                    <div class="line-with-middle-sep">#}
-{#                  <span>#}
-{#                    یا#}
-{#                  </span>#}
-{#                    </div>#}
-{#                    <a href="{% url 'signup' %}" class="btn btn-outline-primary mt-2 mb-3 w-100">ثبت نام</a>#}
-{#                </form>#}
-{#            </div>#}
-{##}
-{#        </div>#}
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="{% static 'vendoor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendoor/animsition/js/animsition.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendoor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendoor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendoor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendoor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendoor/daterangepicker/daterangepicker.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendoor/countdowntime/countdowntime.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'jss/main.js' %}"></script>
+
+    {#    <div class="limiter">#}
+    {#        <div class="container-login100">#}
+    {#            <div class="wrap-login100">#}
+    {#                <div class="d-flex justify-content-center mt-5" dir="rtl">#}
+    {#                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 col-xs-6 bg-white m-3 m-sm-5 border rounded px-4 pt-4 pb-3 shadow">#}
+    {#                <div class="login100-form-title" style="background-image: url(icons/bg-01.jpg);">#}
+    {#                    <form  action="{%  url 'login' %}" method="post" >#}
+    {#                        {% csrf_token %}#}
+    {#                        <label>شماره موبایل:#}
+    {#                            <input name="phone">#}
+    {#                        </label>#}
+    {#                        <label>رمز عبور:#}
+    {#                            <input name="password">#}
+    {#                        </label>#}
+    {#                        <br>#}
+    {#                        <button type="submit" class="btn btn-outline-success">ورود</button>#}
+    {#                    <div>#}
+    {#                            <a href="{% url 'signup' %}" class="btn btn-outline-warning">ثبت نام</a>#}
+    {#                    </div>#}
+    {#                    </form>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {#</div>#}
+    {##}
+    {#        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 col-xs-6 bg-white m-3 m-sm-5 border rounded px-4 pt-4 pb-3 shadow">#}
+    {#                <form method="post">#}
+    {#                        <h1 class="text-center">ورود</h1>#}
+    {#                    {% csrf_token %}#}
+    {#                    {{ form|crispy }}#}
+    {#                    <div class="d-flex justify-content-between align-items-center">#}
+    {#                        <div class="mt-2">#}
+    {#                            <a class="text-decoration-none" href="{% url 'password_reset' %}">فراموشی رمز عبور</a>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                    <button type="submit" class="btn btn-outline-success mt-3 w-100">ورود</button>#}
+    {#                    <div class="line-with-middle-sep">#}
+    {#                  <span>#}
+    {#                    یا#}
+    {#                  </span>#}
+    {#                    </div>#}
+    {#                    <a href="{% url 'signup' %}" class="btn btn-outline-primary mt-2 mb-3 w-100">ثبت نام</a>#}
+    {#                </form>#}
+    {#            </div>#}
+    {##}
+    {#        </div>#}
 {% endblock content %}

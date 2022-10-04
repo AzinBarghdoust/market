@@ -15,7 +15,7 @@ def signup(req):
         form = UserAdminCreationForm(req.POST)
         if form.is_valid():
             form.save()
-            return redirect('signup')
+            return redirect('login')
     return render(req, 'registration/signup.html', {'form': form})
 
 
@@ -37,6 +37,7 @@ def verify(request):
 
 def login_view(request):
     if request.method == 'POST':
+        print(request.POST)
         phone = request.POST.get('phone')
         print(phone)
         password = request.POST.get('password')

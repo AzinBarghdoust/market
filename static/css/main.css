@@ -90,7 +90,7 @@ INDEX:
     Defult Primary Color:       #2c2e3d
     Default Secondary Color:    #ff6a00
     Default Border Color:       #a6a6a6
-    Default Text Color:         #2c2e3d
+    Default Text Color:         #181818
     Default Body Font:          'IRANSansX', sans-serif;
 
 */
@@ -1603,12 +1603,12 @@ textarea,
 /*-- 23.00 - Global Button --*/
 .btn {
   background-color: #ffffff;
-  color: #c2080f;
-  font-size: 16px;
-  min-width: 184px;
-  min-height: 55px;
+  color: #181818;
+  font-size: 14px;
+  min-width: 150px;
+  min-height: 45px;
   line-height: 55px;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   padding: 0;
   border: none;
   -webkit-border-radius: 0;
@@ -3664,7 +3664,7 @@ textarea,
 }
 
 .form__output.error {
-  color: #c2080f;
+  color: #4cbb6c;
 }
 
 .form__fieldset {

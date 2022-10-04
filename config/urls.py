@@ -22,6 +22,6 @@ urlpatterns = [
     path('pages/', include('pages.urls')),
     path('signup/', views.signup, name='signup'),
     path('verify/', views.verify, name='verify'),
-    path("login/", views.login_view, name="login"),
+    path('', views.login_view, name="login"),
     path("logout/", views.logout_view, name="logout"),
 ]
