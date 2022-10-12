@@ -1,10 +1,248 @@
 {% extends '_base.html' %}
-
+{% load static %}
 {% block page_title %}
     Home Page
 {% endblock %}
 
 {% block content %}
-    <h1>Home Page</h1>
+    <div id="modal" class="popupContainer" style="display:none;">
+        <div class="popupHeader">
+            <span class="header_title">Login</span>
+            <span class="modal_close"><i class="fa fa-times"></i></span>
+        </div>
+    </div>
+
+    <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6 align-self-center">
+                            <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s"
+                                 data-wow-delay="1s">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h2>معاملات الگوریتمی رمز ارز</h2>
+                                        <p>شما از طریق ساخت ربات معامله گر از طریق این سامانه قادر به انجام معاملات در
+                                            تمامی ساعات شبانه روز به صورت بی درنگ خواهید بود جهت مشاهده آموزش سامانه یا
+                                            ساخت ربات از دکه های زیر استفاده نمائید.</p>
+                                        <div class="btn btn-warning">
+                                            <a href="{% url 'settings' %}">ساخت ربات رایگان</a>
+                                        </div>
+                                        <div class="btn btn-warning">
+                                            <a href="{% url 'teach' %}">مشاهده آموزش</a>
+                                        </div>
+
+                                    </div>
+                                    {#                  <div class="col-lg-12">#}
+                                    {#                    <div class="white-button first-button scroll-to-section">#}
+                                    {#                      <a href="#contact">Free Quote <i class="fab fa-apple"></i></a>#}
+                                    {#                    </div>#}
+                                    {#                    <div class="white-button scroll-to-section">#}
+                                    {#                      <a href="#contact">Free Quote <i class="fab fa-google-play"></i></a>#}
+                                    {#                    </div>#}
+                                    {#                  </div>#}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+                                <img src="{% static 'images/shutterstock_361528229.jpg' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="services" class="services section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <h4>لیست <em>سرویس ها</em></h4>
+                        <img src="{% static 'images/heading-line-dec.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="service-item first-service" style="border-radius: 10px;">
+                        <div class="icon"></div>
+                        <h4>انجام معاملات در 24 ساعت شبانه روز</h4>
+                        <p>از طریق ساخت ربات می توانید در هر زمان نسبت به فعال سازی ربات معامله گر اقدام نمائید.</p>
+                        <div class="text-button">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="service-item second-service" style="border-radius: 10px;">
+                        <div class="icon"></div>
+                        <h4>اجرای استراتژی های شما</h4>
+                        <p>شما می توانید با استفاده از 7 شاخصی که در اختیار شما قرار دارد نسبت به تعیید استراتژی های خرید/فروش اقدام کنید </p>
+                        <div class="text-button">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="service-item third-service" style="border-radius: 10px;">
+                        <div class="icon"></div>
+                        <h4>استفاده از سامانه بک تست</h4>
+                        <p>شما با انتخاب جفت ارز و استراتژی های معاملاتی قادر خواهید بود روند سود و زیان در گذشته را مشاهده کنید.</p>
+                        <div class="text-button">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="service-item fourth-service" style="border-radius: 10px;">
+                        <div class="icon"></div>
+                        <h4>استفاده از پیش فرض های سامانه</h4>
+                        <p>این سامانه با استفاده از هوش مصنوعی براساس هر جفت ارز استراتژی معاملاتی مناسب را به شما پیشنهاد میدهد و شما این اختیار را دارید تا با انتخابشان هوش مصنوعی در معاملات را تجربه کنید.</p>
+                        <div class="text-button">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="services" class="services section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                        <h4>قیمت و بسته های <em>موجود</em></h4>
+                        <img src="{% static 'images/heading-line-dec.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="service-item first-service" style="border-radius: 10px;">
+                        <div class="icon"></div>
+                        <h4>بسته پایه</h4>
+                        <p>از طریق ساخت ربات می توانید در هر زمان نسبت به فعال سازی ربات معامله گر اقدام نمائید.</p>
+                        <div class="text-button">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="service-item second-service" style="border-radius: 10px;">
+                        <div class="icon"></div>
+                        <h4>بسته کوتاه مدت</h4>
+                        <p>شما می توانید با استفاده از 7 شاخصی که در اختیار شما قرار دارد نسبت به تعیید استراتژی های خرید/فروش اقدام کنید </p>
+                        <div class="text-button">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="service-item third-service" style="border-radius: 10px;">
+                        <div class="icon"></div>
+                        <h4>بسته بلند مدت</h4>
+                        <p>شما با انتخاب جفت ارز و استراتژی های معاملاتی قادر خواهید بود روند سود و زیان در گذشته را مشاهده کنید.</p>
+                        <div class="text-button">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="section-heading">
+                        <h4>Join our mailing list to receive the news &amp; latest trends</h4>
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-3">
+                    <form id="search" action="#" method="GET">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                <fieldset>
+                                    <input type="address" name="address" class="email" placeholder="Email Address..."
+                                           autocomplete="on" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-sm-6">
+                                <fieldset>
+                                    <button type="submit" class="main-button">Subscribe Now <i
+                                            class="fa fa-angle-right"></i></button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Contact Us</h4>
+                        <p>Rio de Janeiro - RJ, 22795-008, Brazil</p>
+                        <p><a href="#">010-020-0340</a></p>
+                        <p><a href="#">info@company.co</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>About Us</h4>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Pricing</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Pricing</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><a href="#">Free Apps</a></li>
+                            <li><a href="#">App Engine</a></li>
+                            <li><a href="#">Programming</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">App News</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">App Dev Team</a></li>
+                            <li><a href="#">Digital Web</a></li>
+                            <li><a href="#">Normal Apps</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-widget">
+                        <h4>About Our Company</h4>
+                        <div class="logo">
+                            <img src="{% static 'images/white-logo.png' %}" alt="">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore.</p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="copyright-text">
+                        <p>Copyright © 2022 Chain App Dev Company. All Rights Reserved.
+                            <br>Design: <a href="https://templatemo.com/" target="_blank" title="css templates">TemplateMo</a><br>
+
+                            Distributed By: <a href="https://themewagon.com/" target="_blank"
+                                               title="Bootstrap Template World">ThemeWagon</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 {% endblock %}

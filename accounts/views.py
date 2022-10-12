@@ -9,6 +9,7 @@ from accounts.forms import UserAdminCreationForm
 from accounts.helper import send_otp
 from random import randint
 from accounts.models import PhoneOTP, CustomUser, Profile
+from accounts.forms import CreateProfileForm
 
 
 def signup(req):
@@ -100,12 +101,16 @@ def logout_view(request):
     return redirect('login')
 
 
-class Profile(LoginRequiredMixin, generic.CreateView):
-    model = Profile
-    fields = ['first_name', 'last_name', 'gender', 'email', ]
-    template_name = 'profile.html'
+def create_profile(request):
+    if request.method == 'POST':
+        form = CreateProfileForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = CreateProfileForm()
+    return render(request, 'profile.html', context={'form': form})
 
-    def form_valid(self, form):
-        question = form.save(commit=False)
-        question.user = self.request.user
-        return super().form_valid(form)
+
+def forget_password(request):
+    return render(request, 'registration/forget_password.html')

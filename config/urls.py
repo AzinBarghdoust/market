@@ -19,10 +19,13 @@ from accounts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pages/', include('pages.urls')),
+    path('', include('pages.urls')),
     path('signup/', views.signup, name='signup'),
     path('verify/', views.verify, name='verify'),
-    path('', views.login_view, name="login"),
+    path('login/', views.login_view, name="login"),
     path("logout/", views.logout_view, name="logout"),
-    path("profile/", views.Profile.as_view(), name="profile"),
+    path("forget_password/", views.forget_password, name="forget_password"),
+    path("profile/", views.create_profile, name="profile"),
+    path("settings/", include('settings.urls')),
+    path('trade/', include('trade.urls')),
 ]

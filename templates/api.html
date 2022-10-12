@@ -1,0 +1,28 @@
+{% extends '_base.html' %}
+
+{% block page_title %}
+    api
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Page title -->
+                <div class="my-3 left">
+                    <h3 style="margin-top: 150px">API</h3>
+                    <hr>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                    <lable>
+                        <input type="url" placeholder="لطفا آدرس API خود را در این محل الصاق نمائید" class="form-control" name="api">
+                    </lable>
+                    <button type="submit" class="btn btn-success mt-2">
+                                                            ذخیره
+                                                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

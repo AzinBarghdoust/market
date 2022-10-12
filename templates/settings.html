@@ -1,0 +1,28 @@
+{% extends '_base.html' %}
+
+{% load static %}
+{% block page_title %}
+    Settings
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Page title -->
+                <div class="my-3 left">
+                    <h3 style="margin-top: 150px">تنظیمات</h3>
+                    <hr>
+                    <lable> صرافی مورد نظر خود را انتخاب کنید:
+                        <br><br>
+                      <button type="submit" class="btn btn-outline-success btn-lg btn-block"><a href="{% url 'api' %}">Kucoin</a></button>
+                        <br><br>
+                      <button type="submit" class="btn btn-secondary btn-lg btn-block" ><a href="">Binance</a></button>
+                        <br><br>
+                      <button type="submit" class="btn btn-secondary btn-lg btn-block" ><a href="">Nobitex</a></button>
+                    </lable>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

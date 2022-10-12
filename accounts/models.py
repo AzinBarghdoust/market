@@ -55,13 +55,16 @@ class Profile(models.Model):
     Woman = 2
     STATUS_CHOICES = ((Man, 'مرد'), (Woman, "زن"))
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=100, verbose_name='نام')
-    last_name = models.CharField(max_length=100, verbose_name='نام خانوادگی')
-    gender = models.IntegerField(choices=STATUS_CHOICES, verbose_name='جنسیت')
+    first_name = models.CharField(max_length=100, verbose_name='نام', blank=True, null=True)
+    last_name = models.CharField(max_length=100, verbose_name='نام خانوادگی', blank=True, null=True)
+    gender = models.IntegerField(choices=STATUS_CHOICES, verbose_name='جنسیت', blank=True, null=True)
     email = models.EmailField(max_length=200, blank=True, unique=True, default=None, verbose_name='ایمیل')
+    city = models.CharField(max_length=20, blank=True, verbose_name='استان')
 
     def __str__(self):
         return self.first_name
 
     def get_absolute_url(self):
         return reverse('profile.html', args=[self.id])
+
+

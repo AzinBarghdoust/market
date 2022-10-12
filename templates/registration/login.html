@@ -1,33 +1,26 @@
 {#{% extends '_base.html' %}#}
-
+<html dir="rtl" lang="fa">
 {% load static %}
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'cs/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'cs/bootstrap.min.css' %}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'cs/style.css' %}">
+
     <title>Login</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="{% static 'image/icons/favicon.ico' %}"/>
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/bootstrap/css/bootstrap.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'font/font-awesome-4.7.0/css/font-awesome.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'font/iconic/css/material-design-iconic-font.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/animate/animate.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/css-hamburgers/hamburgers.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/animsition/css/animsition.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/select2/select2.min.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'vendoor/daterangepicker/daterangepicker.css' %}">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'cs/util.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'cs/main.css' %}">
-    <!--===============================================================================================-->
+
 </head>
+</html>
 {#{% load crispy_forms_tags %}#}
 {#{% block page_title %}#}
 {#    Login#}
@@ -38,63 +31,92 @@
 {#{% endblock %}#}
 
 {% block content %}
-    <div class="limiter">
-        <div class="container-login100" style="background-image: url('/image/bg-01.jpg');">
-            <div class="wrap-login100">
-                <form action="{% url 'login' %}" method="post" class="login100-form validate-form">
-                    {% csrf_token %}
-                    <span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
-					</span>
+    <div class="d-lg-flex half">
+        <div class="bg order-1 order-md-2" style="background-image: url('https://www.mckinsey.com/~/media/mckinsey/industries/advanced%20electronics/our%20insights/blockchain%202%200%20whats%20in%20store%20for%20the%20two%20ends%20semiconductors%20suppliers%20and%20industrials%20consumers/blockchain-industrial-1536x1536-50.jpg');"></div>
+        <div class="contents order-2 order-md-1">
 
-                    <span class="login100-form-title p-b-34 p-t-27">
-						ورود
-					</span>
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7">
+                        <br>
+                        <form action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group first  mb-2 text-lg-right" >
+                                <lable>موبایل:
+                                    <br><br>
+                                    <input class="form-control" type="text" name="phone" placeholder="">
+                                </lable>
+                            </div>
+                            <div class="form-group last mb-3 text-lg-right">
+                                <label>رمز عبور:
+                                    <br><br>
+                                    <input type="password" class="form-control" name="password" placeholder="">
+                                </label>
+                            </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter username">
-                        <input class="input100" type="text" name="phone" placeholder="موبایل">
-                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                            <div class="d-flex mb-5 align-items-center">
+                                <span class="ml-auto"><a href="{% url 'forget_password' %}" class="forgot-pass">فراموشی رمز عبور</a></span>
+                            </div>
+                            <div class="btn btn-warning">
+                                <a href="{% url 'signup' %}">ثبت نام</a>
+                            </div>
+
+                            <button type="submit"  class="btn btn-warning">ورود</button>
+
+                        </form>
                     </div>
-
-                    <div class="wrap-input100 validate-input" data-validate="Enter password">
-
-                        <input class="input100" type="password" name="password" placeholder="رمز عبور">
-
-                        <span class="focus-input100" data-placeholder="&#xf191;"></span>
-                    </div>
-                    <div class="container-login100-form-btn">
-                        <button type='submit' class="login100-form-btn">
-                            ورود
-                        </button>
-                    </div>
-                    <br>
-                    <div class="container-login100-form-btn">
-                        <a href="{% url 'signup' %}" class="login100-form-btn">ثبت نام</a>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
+
+
     </div>
 
 
-    <div id="dropDownSelect1"></div>
 
-    <!--===============================================================================================-->
-    <script src="{% static 'vendoor/jquery/jquery-3.2.1.min.js' %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendoor/animsition/js/animsition.min.js' %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendoor/bootstrap/js/popper.js' %}"></script>
-    <script src="{% static 'vendoor/bootstrap/js/bootstrap.min.js' %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendoor/select2/select2.min.js' %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendoor/daterangepicker/moment.min.js' %}"></script>
-    <script src="{% static 'vendoor/daterangepicker/daterangepicker.js' %}"></script>
-    <!--===============================================================================================-->
-    <script src="{% static 'vendoor/countdowntime/countdowntime.js' %}"></script>
-    <!--===============================================================================================-->
+    <script src="{% static 'jss/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'jss/popper.min.js' %}"></script>
+    <script src="{% static 'jss/bootstrap.min.js' %}"></script>
     <script src="{% static 'jss/main.js' %}"></script>
+    {#    <div class="limiter">#}
+    {#        <div class="container-login100" style="background-image: url('/image/bg-01.jpg');">#}
+    {#            <div class="wrap-login100">#}
+    {#                <form action="{% url 'login' %}" method="post" class="login100-form validate-form">#}
+    {#                    {% csrf_token %}#}
+    {#                    <span class="login100-form-logo">#}
+    {#						<i class="zmdi zmdi-landscape"></i>#}
+    {#					</span>#}
+    {##}
+    {#                    <span class="login100-form-title p-b-34 p-t-27">#}
+    {#						ورود#}
+    {#					</span>#}
+    {##}
+    {#                    <div class="wrap-input100 validate-input" data-validate="Enter username">#}
+    {#                        <input class="input100" type="text" name="phone" placeholder="موبایل">#}
+    {#                        <span class="focus-input100" data-placeholder="&#xf207;"></span>#}
+    {#                    </div>#}
+    {##}
+    {#                    <div class="wrap-input100 validate-input" data-validate="Enter password">#}
+    {##}
+    {#                        <input class="input100" type="password" name="password" placeholder="رمز عبور">#}
+    {##}
+    {#                        <span class="focus-input100" data-placeholder="&#xf191;"></span>#}
+    {#                    </div>#}
+    {#                    <div class="container-login100-form-btn">#}
+    {#                        <button type='submit' class="login100-form-btn">#}
+    {#                            ورود#}
+    {#                        </button>#}
+    {#                    </div>#}
+    {#                    <br>#}
+    {#                    <div class="container-login100-form-btn">#}
+    {#                        <a href="{% url 'signup' %}" class="login100-form-btn">ثبت نام</a>#}
+    {#                    </div>#}
+    {#                </form>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+
+
 
     {#    <div class="limiter">#}
     {#        <div class="container-login100">#}
