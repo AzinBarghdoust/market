@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
+from django.shortcuts import render
+import requests
 from settings.forms import ApiForm
 
 
@@ -20,3 +21,16 @@ def api(request):
         form = ApiForm()
 
     return render(request, 'api.html', context={'form': form})
+
+
+def trade(request):
+    url_coin = "https://api.kucoin.com/api/v1/symbols"
+    response = requests.get(url=url_coin).json()
+    data = response['data']
+    for i in range(len(data)):
+        market = response['data'][i]['market']
+        base = response['data'][i]['baseCurrency']
+        quote = response['data'][i]['quoteCurrency']
+        # base_currency = response['data'][i]['baseCurrency']
+        # print(base_currency)
+    return render(request, 'trade.html', context={'mark': market, 'base': base, 'quote': quote})

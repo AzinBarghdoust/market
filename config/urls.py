@@ -27,5 +27,4 @@ urlpatterns = [
     path("forget_password/", views.forget_password, name="forget_password"),
     path("profile/", views.create_profile, name="profile"),
     path("settings/", include('settings.urls')),
-    path('trade/', include('trade.urls')),
 ]

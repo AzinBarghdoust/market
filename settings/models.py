@@ -19,8 +19,7 @@ class Setting(models.Model):
 
 
 class API(models.Model):
-    api = models.CharField(max_length=250)
-    username = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=None)
+    api = models.URLField(max_length=250, null=True, blank=True)
 
     def __str__(self):
         return self.api

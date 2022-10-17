@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'pages',
     'crispy_forms',
     'settings',
-    'trade',
 ]
 
 MIDDLEWARE = [

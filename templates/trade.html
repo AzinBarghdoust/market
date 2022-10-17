@@ -6,5 +6,36 @@
 {% endblock %}
 
 {% block content %}
-<h1>trade</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Page title -->
+                <div class="my-3 left">
+                    <h3 style="margin-top: 150px">معامله</h3>
+                    <hr>
+                    <lable>خرید ارز:
+                        <select title="base_currency">
+                            <option>base_currency</option>
+                            <option selected>-------------------</option>
+                            {% for i in base %}
+                                <option value="base"> {{ base }}</option>
+                            {% endfor %}
+                        </select>
+                        <lable>بر مبنای :
+                            <select title="base_currency">
+                                <option>quoteCurrency</option>
+                                <option selected>-------------------</option>
+                                {% for i in quote %}
+                                    <option value="quote"> {{ quote }}</option>
+                                {% endfor %}
+                            </select>
+                        </lable>
+
+                    </lable>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+
+

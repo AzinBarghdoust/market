@@ -19,8 +19,12 @@ def signup(req):
         if form.is_valid():
             form.save()
         phone = form.cleaned_data.get('phone')
+        user = CustomUser.objects.create(phone=phone)
         password = form.cleaned_data.get('password')
-        user = CustomUser.objects.create(phone=phone, password=password)
+        user.set_password(password)
+        user.save()
+        return redirect('verify')
+
         otp = randint(10000, 99999)
         try:
             print(phone)
@@ -101,12 +105,13 @@ def logout_view(request):
     return redirect('login')
 
 
+@login_required()
 def create_profile(request):
     if request.method == 'POST':
         form = CreateProfileForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            form = CreateProfileForm()
     else:
         form = CreateProfileForm()
     return render(request, 'profile.html', context={'form': form})
