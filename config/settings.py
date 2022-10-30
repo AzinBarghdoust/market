@@ -104,6 +104,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.authenticate.PhoneBackEnd',
+]
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -130,9 +134,5 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-# LOGIN_REDIRECT_URL = 'verify'
-# LOGOUT_REDIRECT_URL = 'home'
-
 LOGIN_URL = 'login'
 
-# KAVENEGAR_API = '6B452B6E5070585972704F6C696D5A7A72766C67524D79496E4F6B6A59756463566B57696D65666E4636633D'

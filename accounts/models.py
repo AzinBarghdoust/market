@@ -1,3 +1,4 @@
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.urls import reverse
@@ -52,6 +53,10 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
+
+    def save(self, *args, **kwargs):
+        self.crew_password = make_password(self.password)
+        super(CustomUser, self).save(*args, **kwargs)
 
 
 class PhoneOTP(models.Model):

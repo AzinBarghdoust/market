@@ -23,8 +23,8 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('verify/', views.verify, name='verify'),
     path('login/', views.login_view, name="login"),
-    path("logout/", views.logout_view, name="logout"),
+    path("logout/", views.UserLogoutView.as_view(), name="logout"),
     path("forget_password/", views.forget_password, name="forget_password"),
-    path("profile/", views.create_profile, name="profile"),
+    # path("profile/", views.create_profile, name="profile"),
     path("settings/", include('settings.urls')),
 ]

@@ -24,7 +24,7 @@
                     <div class="card" style="border-radius: 20px;">
                         <div class="card-body p-5">
                             <h3 class="text-uppercase text-center mt-6 ">ایجاد حساب کاربری</h3>
-                            <form action="" method="POST">
+                            <form action="{%  url 'signup' %}" method="POST">
                                 {% csrf_token %}
                                 <label>شماره موبایل:
                                         <input name="phone" class="form-control">

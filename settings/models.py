@@ -18,8 +18,9 @@ class Setting(models.Model):
         return self.exchange
 
 
-class API(models.Model):
-    api = models.URLField(max_length=250, null=True, blank=True)
+class Api(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True)
+    api = models.URLField(max_length=200)
 
     def __str__(self):
         return self.api

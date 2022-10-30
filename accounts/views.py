@@ -1,15 +1,12 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.views import generic
+from django.views import generic, View
 from kavenegar import KavenegarAPI, APIException, HTTPException
-
-from accounts.forms import UserAdminCreationForm
-from accounts.helper import send_otp
+from django.contrib import messages
 from random import randint
-from accounts.models import PhoneOTP, CustomUser, Profile
-from accounts.forms import CreateProfileForm
+from accounts.models import PhoneOTP, CustomUser
+from .forms import UserAdminCreationForm, LogInForm
 
 
 def signup(req):
@@ -17,12 +14,10 @@ def signup(req):
     if req.method == 'POST':
         form = UserAdminCreationForm(req.POST)
         if form.is_valid():
-            form.save()
-        phone = form.cleaned_data.get('phone')
-        user = CustomUser.objects.create(phone=phone)
-        password = form.cleaned_data.get('password')
-        user.set_password(password)
-        user.save()
+            phone = form.cleaned_data.get("phone")
+            password = form.cleaned_data.get("password")
+            user = CustomUser.objects.create_user(phone=phone, password=password)
+            user.save()
         return redirect('verify')
 
         otp = randint(10000, 99999)
@@ -65,56 +60,46 @@ def verify(request):
 
 
 def login_view(request):
+    form = LogInForm()
     if request.method == 'POST':
-        print(request.POST)
-        phone = request.POST.get('phone')
-        print(phone)
-        password = request.POST.get('password')
-        print(password)
-        user = authenticate(phone=phone, password=password)
-        print(user)
-
-        if user is not None:
-            login(request, user)
-            otp = randint(10000, 99999)
-            # send_otp(phone, otp)
-            try:
-                print(phone)
-                api = KavenegarAPI(
-                    '6B452B6E5070585972704F6C696D5A7A72766C67524D79496E4F6B6A59756463566B57696D65666E4636633D')
-                params = {
-                    'sender': '10008663',
-                    'receptor': phone,
-                    'message': f'your otp is {otp}'
-                }
-                response = api.sms_send(params)
-                print(response)
-                print(otp)
-            except APIException as e:
-                print(e)
-            except HTTPException as e:
-                print(e)
-            phone_otp = PhoneOTP.objects.create(phone=phone, otp=otp)
-            return redirect('verify')
-
-    return render(request, 'registration/login.html')
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('login')
-
-
-@login_required()
-def create_profile(request):
-    if request.method == 'POST':
-        form = CreateProfileForm(request.POST)
+        form = LogInForm(request.POST)
         if form.is_valid():
-            form.save()
-            form = CreateProfileForm()
-    else:
-        form = CreateProfileForm()
-    return render(request, 'profile.html', context={'form': form})
+            phone = form.cleaned_data.get('phone')
+            print(phone)
+            password = form.cleaned_data.get('password')
+            print(password)
+            user = authenticate(phone=phone, password=password)
+            print(user)
+            if user is not None:
+                login(request, user)
+            # messages.success(request, 'شما با موفقیت وارد شدید!', 'error')
+            return redirect('analyze_list')
+        print(form.errors)
+        # print(form.errors)
+    # else:
+    # messages.error(request, 'نام کاربری یا رمزعبور اشتباه است!', 'danger')
+
+    return render(request, 'registration/login.html', {'form': form})
+
+
+class UserLogoutView(LoginRequiredMixin, View):
+    def get(self, request):
+        logout(request)
+        messages.success(request, 'شما با موفقیت خارج شدید', 'success')
+        return redirect('login')
+
+
+# @login_required()
+# def create_profile(request):
+#     form = CreateProfileForm()
+#     if request.method == 'POST':
+#         form = CreateProfileForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             form = CreateProfileForm()
+#     else:
+#         form = CreateProfileForm()
+#     return render(request, 'profile.html', context={'form': form})
 
 
 def forget_password(request):

@@ -1,8 +1,8 @@
 from django import forms
-from .models import API
+from .models import Api
 
 
 class ApiForm(forms.ModelForm):
     class Meta:
-        model = API
+        model = Api
         fields = ['api']

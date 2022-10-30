@@ -12,6 +12,7 @@ def settings(request):
 
 @login_required
 def api(request):
+    form = ApiForm()
     if request.method == 'POST':
         form = ApiForm(request.POST)
         if form.is_valid():
@@ -28,9 +29,9 @@ def trade(request):
     response = requests.get(url=url_coin).json()
     data = response['data']
     for i in range(len(data)):
-        market = response['data'][i]['market']
+        mark = response['data'][i]['market']
         base = response['data'][i]['baseCurrency']
         quote = response['data'][i]['quoteCurrency']
         # base_currency = response['data'][i]['baseCurrency']
         # print(base_currency)
-    return render(request, 'trade.html', context={'mark': market, 'base': base, 'quote': quote})
+    return render(request, 'trade.html', context={'market': mark, 'base': base, 'quote': quote})
